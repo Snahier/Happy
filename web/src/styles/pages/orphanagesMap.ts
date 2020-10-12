@@ -10,6 +10,10 @@ export const OrphanagesMapContainer = styled.div`
 
   width: 100vw;
   height: 100vh;
+
+  .leaflet-container {
+    z-index: 5;
+  }
 `
 
 export const Aside = styled.aside`
@@ -54,6 +58,7 @@ export const CreateOrphanage = styled(Link)`
   position: absolute;
   right: 40px;
   bottom: 40px;
+  z-index: 10;
 
   display: flex;
   justify-content: center;
