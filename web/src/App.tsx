@@ -1,13 +1,13 @@
 import React from "react"
+import Landing from "./pages/landing"
 import { GlobalStyles } from "./styles/GlobalStyles"
-import { PageLandingContainer } from "./styles/pages/landing"
 
 function App() {
   return (
-    <PageLandingContainer>
-      <h1>Next Level Week #3 - Happy</h1>
+    <div className="App">
+      <Landing />
       <GlobalStyles />
-    </PageLandingContainer>
+    </div>
   )
 }
 
