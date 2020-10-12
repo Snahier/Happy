@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 import backgroundImage from "../../Assets/landing.svg"
 
@@ -59,7 +60,7 @@ export const City = styled.strong`
 `
 export const State = styled.span``
 
-export const EnterApp = styled.a`
+export const EnterApp = styled(Link)`
   position: absolute;
   right: 0;
   bottom: 0;
