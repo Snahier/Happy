@@ -7,3 +7,13 @@ export const PageLandingContainer = styled.div`
 `
 
 export const ContentWrapper = styled.div``
+
+export const Main = styled.main``
+export const Title = styled.h1``
+export const Description = styled.p``
+
+export const Location = styled.div``
+export const City = styled.strong``
+export const State = styled.span``
+
+export const EnterApp = styled.a``
