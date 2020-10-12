@@ -12,6 +12,7 @@ import {
 } from "../styles/pages/landing"
 
 import logoImg from "../Assets/logo.svg"
+import { FiArrowRight } from "react-icons/fi"
 
 interface LandingProps {}
 
@@ -34,7 +35,7 @@ const Landing: React.FC<LandingProps> = () => {
         </Location>
 
         <EnterApp href="">
-          >
+          <FiArrowRight size={26} color="rgba(0, 0, 0, 0.6)" />
         </EnterApp>
       </ContentWrapper>
     </PageLandingContainer>

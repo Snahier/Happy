@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import backgroundImage from "../../Assets/landing.svg"
 
 export const PageLandingContainer = styled.div`
   display: flex;
@@ -23,6 +24,8 @@ export const ContentWrapper = styled.div`
   max-width: 1100px;
   height: 100%;
   max-height: 680px;
+
+  background: url(${backgroundImage}) no-repeat 80% center;
 `
 
 export const Main = styled.main`
