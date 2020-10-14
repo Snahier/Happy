@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
+import { Popup as LeafletPopup } from "react-leaflet"
 
 import mapMarkerImg from "../../Assets/map-marker.svg"
 
@@ -75,4 +76,38 @@ export const CreateOrphanage = styled(Link)`
   &:hover {
     background: #17d6eb;
   }
+`
+
+export const Popup = styled(LeafletPopup)`
+  .leaflet-popup-content-wrapper {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: none;
+  }
+  .leaflet-popup-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 8px 12px;
+
+    color: #0089a5;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .leaflet-popup-tip-container {
+    display: none;
+  }
+`
+export const PopupLink = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 40px;
+  height: 40px;
+
+  background-color: #15c3d6;
+  border-radius: 12px;
+  box-shadow: 17.2868px 27.6589px 41.4884px rgba(23, 142, 166, 0.16);
 `
