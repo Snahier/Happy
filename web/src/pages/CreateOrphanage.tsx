@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { FormEvent, useState } from "react"
 import { Map, Marker, TileLayer } from "react-leaflet"
 import { LeafletMouseEvent } from "leaflet"
 
@@ -12,10 +12,32 @@ import { mapIcon } from "../utils/mapIcon"
 export default function CreateOrphanage() {
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 })
 
+  const [name, setName] = useState("")
+  const [about, setAbout] = useState("")
+  const [instructions, setInstructions] = useState("")
+  const [opening_hours, setOpeningHours] = useState("")
+  const [open_on_weekends, setOpen_on_weekends] = useState(true)
+
   function handleMapClick(event: LeafletMouseEvent) {
     const { lat, lng } = event.latlng
 
     setPosition({ latitude: lat, longitude: lng })
+  }
+
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault()
+
+    const { latitude, longitude } = position
+
+    console.log({
+      name,
+      about,
+      latitude,
+      longitude,
+      instructions,
+      opening_hours,
+      open_on_weekends,
+    })
   }
 
   return (
@@ -23,7 +45,7 @@ export default function CreateOrphanage() {
       <Sidebar />
 
       <main>
-        <form className="create-orphanage-form">
+        <form className="create-orphanage-form" onSubmit={handleSubmit}>
           <fieldset>
             <legend>Dados</legend>
 
@@ -48,14 +70,23 @@ export default function CreateOrphanage() {
 
             <div className="input-block">
               <label htmlFor="name">Nome</label>
-              <input id="name" />
+              <input
+                id="name"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+              />
             </div>
 
             <div className="input-block">
               <label htmlFor="about">
                 Sobre <span>Máximo de 300 caracteres</span>
               </label>
-              <textarea id="name" maxLength={300} />
+              <textarea
+                id="name"
+                maxLength={300}
+                value={about}
+                onChange={(event) => setAbout(event.target.value)}
+              />
             </div>
 
             <div className="input-block">
@@ -74,27 +105,45 @@ export default function CreateOrphanage() {
 
             <div className="input-block">
               <label htmlFor="instructions">Instruções</label>
-              <textarea id="instructions" />
+              <textarea
+                id="instructions"
+                value={instructions}
+                onChange={(event) => setInstructions(event.target.value)}
+              />
             </div>
 
             <div className="input-block">
-              <label htmlFor="opening_hours">Nome</label>
-              <input id="opening_hours" />
+              <label htmlFor="opening_hours">Horário de funcionamento</label>
+              <input
+                id="opening_hours"
+                value={opening_hours}
+                onChange={(event) => setOpeningHours(event.target.value)}
+              />
             </div>
 
             <div className="input-block">
               <label htmlFor="open_on_weekends">Atende fim de semana</label>
 
               <div className="button-select">
-                <button type="button" className="active">
+                <button
+                  type="button"
+                  className={open_on_weekends ? "active" : ""}
+                  onClick={() => setOpen_on_weekends(true)}
+                >
                   Sim
                 </button>
-                <button type="button">Não</button>
+                <button
+                  type="button"
+                  className={!open_on_weekends ? "active" : ""}
+                  onClick={() => setOpen_on_weekends(false)}
+                >
+                  Não
+                </button>
               </div>
             </div>
           </fieldset>
 
-          <button className="confirm-button" type="submit">
+          <button type="button" className="confirm-button" type="submit">
             Confirmar
           </button>
         </form>
