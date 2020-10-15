@@ -2,7 +2,14 @@ import { StatusBar } from "expo-status-bar"
 import React from "react"
 import { StyleSheet, Text, View } from "react-native"
 import { PROVIDER_GOOGLE } from "react-native-maps"
-import { AppContainer, SMapView, SMarker } from "./styles"
+import {
+  AppContainer,
+  CalloutContainer,
+  OrphanageName,
+  SCallout,
+  SMapView,
+  SMarker,
+} from "./styles"
 
 import mapMarker from "./src/assets/map-marker.png"
 
@@ -20,11 +27,21 @@ export default function App() {
       >
         <SMarker
           icon={mapMarker}
+          calloutAnchor={{
+            x: 2.7,
+            y: 0.8,
+          }}
           coordinate={{
             latitude: -12.9965896,
             longitude: -38.458835,
           }}
-        />
+        >
+          <SCallout tooltip onPress={() => {}}>
+            <CalloutContainer>
+              <OrphanageName>Lar das meninas</OrphanageName>
+            </CalloutContainer>
+          </SCallout>
+        </SMarker>
       </SMapView>
     </AppContainer>
   )
