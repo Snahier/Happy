@@ -2,7 +2,7 @@ import styled from "styled-components/native"
 import MapView, { Callout, Marker } from "react-native-maps"
 import { Dimensions, Text, TouchableOpacity, View } from "react-native"
 
-export const AppContainer = styled.View`
+export const OrphanagesMapContainer = styled.View`
   flex: 1;
 `
 export const SMapView = styled(MapView)`
