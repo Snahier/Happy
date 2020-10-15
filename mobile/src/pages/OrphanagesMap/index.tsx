@@ -11,6 +11,7 @@ import {
   SMarker,
 } from "./styles"
 import { PROVIDER_GOOGLE } from "react-native-maps"
+import { useNavigation } from "@react-navigation/native"
 
 import mapMarker from "../../assets/map-marker.png"
 import { Feather } from "@expo/vector-icons"
@@ -18,6 +19,12 @@ import { Feather } from "@expo/vector-icons"
 interface OrphanagesMapProps {}
 
 const OrphanagesMap: React.FC<OrphanagesMapProps> = () => {
+  const navigation = useNavigation()
+
+  function handleNavigateToOrphanageDetails() {
+    navigation.navigate("OrphanageDetails")
+  }
+
   return (
     <OrphanagesMapContainer>
       <SMapView
@@ -40,7 +47,7 @@ const OrphanagesMap: React.FC<OrphanagesMapProps> = () => {
             longitude: -38.458835,
           }}
         >
-          <SCallout tooltip onPress={() => {}}>
+          <SCallout tooltip onPress={handleNavigateToOrphanageDetails}>
             <CalloutContainer>
               <OrphanageName>Lar das meninas</OrphanageName>
             </CalloutContainer>
