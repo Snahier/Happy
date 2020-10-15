@@ -13,11 +13,27 @@ import {
   SMapView,
   SMarker,
 } from "./styles"
+import { useFonts } from "expo-font"
+import {
+  Nunito_600SemiBold,
+  Nunito_700Bold,
+  Nunito_800ExtraBold,
+} from "@expo-google-fonts/nunito"
 
 import mapMarker from "./src/assets/map-marker.png"
 import { Feather } from "@expo/vector-icons"
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    Nunito_600SemiBold,
+    Nunito_700Bold,
+    Nunito_800ExtraBold,
+  })
+
+  if (!fontsLoaded) {
+    return null
+  }
+
   return (
     <AppContainer>
       <SMapView

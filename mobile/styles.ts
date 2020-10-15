@@ -23,6 +23,7 @@ export const CalloutContainer = styled(View)`
 `
 export const OrphanageName = styled(Text)`
   color: #0089a5;
+  font-family: Nunito_700Bold;
   font-size: 14px;
 `
 export const Footer = styled(View)`
@@ -40,11 +41,11 @@ export const Footer = styled(View)`
 
   background-color: #fff;
   border-radius: 20px;
-
   elevation: 3;
 `
 export const FoundOrphanages = styled(Text)`
   color: #8fa7b3;
+  font-family: Nunito_700Bold;
 `
 export const CreateOrphanage = styled(TouchableOpacity)`
   justify-content: center;
