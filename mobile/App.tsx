@@ -5,6 +5,9 @@ import { PROVIDER_GOOGLE } from "react-native-maps"
 import {
   AppContainer,
   CalloutContainer,
+  CreateOrphanage,
+  Footer,
+  FoundOrphanages,
   OrphanageName,
   SCallout,
   SMapView,
@@ -12,6 +15,7 @@ import {
 } from "./styles"
 
 import mapMarker from "./src/assets/map-marker.png"
+import { Feather } from "@expo/vector-icons"
 
 export default function App() {
   return (
@@ -43,6 +47,14 @@ export default function App() {
           </SCallout>
         </SMarker>
       </SMapView>
+
+      <Footer>
+        <FoundOrphanages>2 orfanatos encontrados</FoundOrphanages>
+
+        <CreateOrphanage onPress={() => {}}>
+          <Feather name="plus" size={20} color="#fff" />
+        </CreateOrphanage>
+      </Footer>
     </AppContainer>
   )
 }
