@@ -1,6 +1,7 @@
 import styled from "styled-components/native"
 import MapView, { Callout, Marker } from "react-native-maps"
-import { Dimensions, Text, TouchableOpacity, View } from "react-native"
+import { Dimensions, Text, View } from "react-native"
+import { RectButton } from "react-native-gesture-handler"
 
 export const OrphanagesMapContainer = styled.View`
   flex: 1;
@@ -47,7 +48,7 @@ export const FoundOrphanages = styled(Text)`
   color: #8fa7b3;
   font-family: Nunito_700Bold;
 `
-export const CreateOrphanage = styled(TouchableOpacity)`
+export const CreateOrphanage = styled(RectButton)`
   justify-content: center;
   align-items: center;
 
