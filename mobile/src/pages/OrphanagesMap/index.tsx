@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import {
   OrphanagesMapContainer,
   CalloutContainer,
@@ -15,14 +15,30 @@ import { useNavigation } from "@react-navigation/native"
 
 import mapMarker from "../../assets/map-marker.png"
 import { Feather } from "@expo/vector-icons"
+import api from "../../services/api"
 
 interface OrphanagesMapProps {}
+
+interface Orphanage {
+  id: number
+  name: string
+  latitude: number
+  longitude: number
+}
 
 const OrphanagesMap: React.FC<OrphanagesMapProps> = () => {
   const navigation = useNavigation()
 
-  function handleNavigateToOrphanageDetails() {
-    navigation.navigate("OrphanageDetails")
+  const [orphanages, setOrphanages] = useState<Orphanage[]>([])
+
+  useEffect(() => {
+    api.get("orphanages").then(({ data }) => {
+      setOrphanages(data)
+    })
+  }, [])
+
+  function handleNavigateToOrphanageDetails(id: number) {
+    navigation.navigate("OrphanageDetails", { id })
   }
 
   function handleNavigateToCreateOrphanage() {
@@ -40,23 +56,29 @@ const OrphanagesMap: React.FC<OrphanagesMapProps> = () => {
           longitudeDelta: 0.008,
         }}
       >
-        <SMarker
-          icon={mapMarker}
-          calloutAnchor={{
-            x: 2.7,
-            y: 0.8,
-          }}
-          coordinate={{
-            latitude: -12.9965896,
-            longitude: -38.458835,
-          }}
-        >
-          <SCallout tooltip onPress={handleNavigateToOrphanageDetails}>
-            <CalloutContainer>
-              <OrphanageName>Lar das meninas</OrphanageName>
-            </CalloutContainer>
-          </SCallout>
-        </SMarker>
+        {orphanages.map(({ id, latitude, longitude, name }) => (
+          <SMarker
+            key={id}
+            icon={mapMarker}
+            calloutAnchor={{
+              x: 2.7,
+              y: 0.8,
+            }}
+            coordinate={{
+              latitude,
+              longitude,
+            }}
+          >
+            <SCallout
+              tooltip
+              onPress={() => handleNavigateToOrphanageDetails(id)}
+            >
+              <CalloutContainer>
+                <OrphanageName>{name}</OrphanageName>
+              </CalloutContainer>
+            </SCallout>
+          </SMarker>
+        ))}
       </SMapView>
 
       <Footer>
