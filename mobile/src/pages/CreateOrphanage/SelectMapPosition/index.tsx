@@ -16,7 +16,7 @@ export default function SelectMapPosition() {
   })
 
   function handleNextStep() {
-    navigation.navigate("OrphanageData")
+    navigation.navigate("OrphanageData", { position })
   }
 
   function handleSelectMapPosition(event: MapEvent) {
